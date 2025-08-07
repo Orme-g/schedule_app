@@ -1,9 +1,10 @@
-import { useMemo, memo } from "react";
+import { useMemo } from "react";
 import ScheduleCell from "../scheduleCell/ScheduleCell";
 import { store } from "../../store/store";
 import "./EmployeeSchedule.scss";
 
-const EmployeeSchedule = memo(({ employeeName, employeeData, monthData, handleSelectEmployee }) => {
+const EmployeeSchedule = ({ employeeName, employeeData, monthData, handleSelectEmployee }) => {
+    console.log("Parent Render!");
     const { selectedId, selectedEmployee } = store();
     const setSelectedEmployee = store((state) => state.setSelectedEmployee);
     const isSelectedEmployee =
@@ -40,6 +41,6 @@ const EmployeeSchedule = memo(({ employeeName, employeeData, monthData, handleSe
             {toDisplay}
         </div>
     );
-});
+};
 
 export default EmployeeSchedule;

@@ -1,9 +1,8 @@
-import { memo } from "react";
 import EmployeeSchedule from "../employeeSchedule/EmployeeSchedule";
 import prepareDataForSchedule from "../../utils/prepareDataForSchedule";
 import "./WorkingSchedule.scss";
 
-const WorkingSchedule = memo(({ monthData, employeesData, handleSelectEmployee }) => {
+const WorkingSchedule = ({ monthData, employeesData, handleSelectEmployee }) => {
     const headerCells = monthData.map(({ date, weekday }) => (
         <div key={date} className="working-schedule__header-cell">
             <span>{weekday},</span>
@@ -32,6 +31,6 @@ const WorkingSchedule = memo(({ monthData, employeesData, handleSelectEmployee }
             <div className="schedule">{schedules}</div>
         </div>
     );
-});
+};
 
 export default WorkingSchedule;
