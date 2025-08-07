@@ -4,7 +4,6 @@ import { store } from "../../store/store";
 import "./EmployeeSchedule.scss";
 
 const EmployeeSchedule = ({ employeeName, employeeData, monthData, handleSelectEmployee }) => {
-    console.log("Parent Render!");
     const { selectedId, selectedEmployee } = store();
     const setSelectedEmployee = store((state) => state.setSelectedEmployee);
     const isSelectedEmployee =

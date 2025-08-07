@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./ScheduleFilter.scss";
 
 const ScheduleFilter = ({ currentMonth, applyFilter }) => {
-    const [filterStart, setFilterStart] = useState();
+    const [filterStart, setFilterStart] = useState(0);
     const [filterEnd, setFilterEnd] = useState(currentMonth.length - 1);
     const [buttonDisabled, setButtonDisabled] = useState(false);
     useEffect(() => {

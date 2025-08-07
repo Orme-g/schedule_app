@@ -5,6 +5,7 @@ import ChartBoard from "../../components/chartBoard/ChartBoard";
 import ScheduleFilter from "../../components/scheduleFilter/ScheduleFilter";
 import ShiftData from "../../components/shiftData/ShiftData";
 import splitChartDataByNumber from "../../utils/splitChartDataByNumber";
+import { store } from "../../store/store";
 
 import "./SchedulePage.scss";
 import prepareObjectForChart from "../../utils/prepareObjectForChart";
@@ -15,7 +16,8 @@ const SchedulePage = () => {
     const [filteredMonth, setFilteredMonth] = useState(null);
     const [filterPeriod, setFilterPeriod] = useState();
     const [chartboardData, setChartboardData] = useState(null);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [selectedEmployeeName, setSelectedEmployeeName] = useState(null);
+    const setEmployee = store((state) => state.setSelectedEmployee);
     useEffect(() => {
         fetch("/data/database.json")
             .then((data) => data.json())
@@ -32,11 +34,13 @@ const SchedulePage = () => {
                 setFilterPeriod({ start: 0, end: data.length - 1 });
             });
     }, []);
+
     const handleSelectEmployee = useCallback(
         (employee) => {
-            if (employee === selectedEmployee) {
+            if (employee === selectedEmployeeName) {
                 return;
             }
+            setSelectedEmployeeName(employee);
             prepearedData.forEach((item) => {
                 if (item[0].employee === employee) {
                     const dataForChartboard = prepareObjectForChart(item);
@@ -51,15 +55,16 @@ const SchedulePage = () => {
                     setChartboardData(splittedData);
                 }
             });
-            setSelectedEmployee(employee);
         },
-        [selectedEmployee, prepearedData, filterPeriod]
+        [selectedEmployeeName, prepearedData, filterPeriod]
     );
     function applyFilter(filterStart, filterEnd) {
         setFilterPeriod({ start: filterStart, end: filterEnd });
         let filteredData = currentMonth.slice(filterStart, filterEnd + 1);
         setFilteredMonth(filteredData);
         setChartboardData(null);
+        setSelectedEmployeeName(null);
+        setEmployee(null);
     }
 
     if (!prepearedData || !currentMonth) {
