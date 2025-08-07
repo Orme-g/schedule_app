@@ -1,0 +1,128 @@
+.shift-data {
+    height: 100%;
+    width: 100%;
+    background-color: #e3eff9;
+    color: #0b5497;
+    padding: 10px 20px;
+    border-radius: 10px;
+    &__notice {
+        font-size: 22px;
+        font-weight: 300;
+        padding: 10px 30px;
+        color: #0b5497;
+    }
+    &__title {
+        font-size: 24px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #0b5497;
+        width: fit-content;
+    }
+    &__content {
+        display: flex;
+    }
+    &__content-left {
+        width: 50%;
+    }
+    &__content-right {
+        width: 50%;
+        .shift-data__item {
+            width: 45%;
+        }
+        .shift-data__value {
+            width: 55%;
+        }
+    }
+    &__field {
+        display: flex;
+        margin-bottom: 5px;
+    }
+    &__item {
+        width: 35%;
+        text-align: right;
+    }
+    &__value {
+        width: 65%;
+        padding-left: 15px;
+        font-style: italic;
+    }
+    &__violation-item {
+        color: #d75b5b;
+        margin-bottom: 5px;
+    }
+}
+.highlight-violation {
+    color: #d75b5b;
+}
+
+@media (max-width: 651px) {
+    .shift-data {
+        &__title {
+            font-size: 20px;
+        }
+
+        &__notice {
+            font-size: 18px;
+            padding: 10px;
+        }
+        &__content {
+            font-size: 14px;
+        }
+        &__content-left {
+            width: 45%;
+        }
+        &__content-right {
+            width: 55%;
+            .shift-data__item {
+                width: 55%;
+            }
+            .shift-data__value {
+                width: 45%;
+            }
+        }
+        &__item {
+            width: 50%;
+        }
+        &__value {
+            width: 50%;
+            padding-left: 5px;
+        }
+    }
+}
+@media (max-width: 511px) {
+    .shift-data {
+        &__content {
+            font-size: 14px;
+        }
+        &__content-left {
+            width: 41%;
+        }
+        &__content-right {
+            width: 59%;
+        }
+    }
+}
+@media (max-width: 420px) {
+    .shift-data {
+        &__content {
+            flex-direction: column;
+        }
+        &__content-left {
+            width: 100%;
+        }
+        &__content-right {
+            width: 100%;
+            .shift-data__item {
+                width: 35%;
+            }
+            .shift-data__value {
+                width: 65%;
+            }
+        }
+        &__item {
+            width: 35%;
+        }
+        &__value {
+            width: 65%;
+        }
+    }
+}

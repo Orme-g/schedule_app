@@ -1,0 +1,43 @@
+.employee-schedule {
+    &__employee-name {
+        cursor: pointer;
+        padding: 5px 10px;
+        background-color: #fff;
+        height: 55px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid #0b5497;
+        border-bottom: 1px solid #0b5497;
+        border-left: 1px solid #0b5497;
+        border-radius: 20px 0 0 0;
+        font-size: 20px;
+        &.highlight-name {
+            background-color: #0b5497;
+            color: #fff;
+        }
+    }
+    &__employee-data {
+        margin-top: 5px;
+        display: flex;
+        width: fit-content;
+        gap: 5px;
+    }
+}
+.name-wrapper {
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+}
+
+@media (max-width: 651px) {
+    .employee-schedule {
+        &__employee-name {
+            padding: 5px 10px;
+            font-size: 18px;
+            width: 110px;
+            height: 40px;
+        }
+    }
+}

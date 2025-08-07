@@ -1,0 +1,45 @@
+.schedule-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: #e3eff9;
+    color: #0b5497;
+    font-size: 20px;
+    font-weight: 500;
+    select {
+        margin: 0 5px;
+        font-weight: inherit;
+        background-color: inherit;
+        color: inherit;
+        border: 1px solid #0b5497;
+        border-radius: 3px;
+    }
+    button {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 651px) {
+    .schedule-filter {
+        font-size: 18px;
+        padding: 10px 20px;
+        button {
+            margin-left: 10px;
+        }
+    }
+}
+@media (max-width: 501px) {
+    .schedule-filter {
+        font-size: 16px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: start;
+        button {
+            margin: 0 auto;
+        }
+    }
+}

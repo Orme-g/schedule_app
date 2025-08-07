@@ -1,0 +1,98 @@
+.schedule-page {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+    height: 100vh;
+    overflow: scroll;
+    h1 {
+        color: #0b5497;
+        font-size: 40px;
+        font-weight: 400;
+        width: fit-content;
+        margin-bottom: 40px;
+    }
+    &__filter {
+        height: fit-content;
+        width: fit-content;
+        margin-bottom: 20px;
+    }
+    &__working-schedule {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    &__shift-data {
+        height: fit-content;
+        width: 600px;
+        margin-bottom: 30px;
+    }
+    &__chartboards {
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        flex-direction: column;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding-bottom: 50px;
+    }
+    &__notice {
+        font-size: 22px;
+        font-weight: 300;
+        padding: 10px 30px;
+        width: 100%;
+        color: #0b5497;
+    }
+    &__button {
+        cursor: pointer;
+        padding: 7px 12px;
+        border-radius: 5px;
+        border: none;
+        background-color: #0b5497;
+        color: #e3eff9;
+        transition: transform 0.1s ease;
+        &:active {
+            transform: scale(0.95);
+        }
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+            color: #a90d0d;
+            background-color: #ffb4b4;
+        }
+    }
+}
+
+@media (max-width: 1151px) {
+    .schedule-page {
+        &__chartboards {
+            grid-template-columns: 1fr;
+        }
+    }
+    .chartboard-item {
+        width: 550px;
+    }
+}
+@media (max-width: 651px) {
+    .schedule-page {
+        h1 {
+            font-size: 30px;
+        }
+        &__notice {
+            font-size: 18px;
+            padding: 10px;
+        }
+        &__filter {
+            width: 100%;
+        }
+        &__shift-data {
+            width: 100%;
+        }
+        &__button {
+            padding: 4px 8px;
+            font-size: 16px;
+        }
+    }
+    .chartboard-item {
+        width: 100%;
+    }
+}

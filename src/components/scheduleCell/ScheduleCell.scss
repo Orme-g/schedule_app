@@ -1,0 +1,54 @@
+.schedule-cell {
+    height: 55px;
+    width: 55px;
+    cursor: pointer;
+    border-radius: 5px;
+    &:hover.no-violation {
+        outline: 2px solid #044e93;
+    }
+    &:hover.violation {
+        outline: 2px solid #dd2020;
+    }
+    &:hover.was-missing {
+        outline: 2px solid #8f0a0a;
+    }
+    &:hover.future-plan {
+        outline: 2px solid #133d64;
+    }
+    &.selected.no-violation {
+        outline: 3px solid #044e93;
+    }
+    &.selected.was-missing {
+        outline: 3px solid #8f0a0a;
+    }
+    &.selected.violation {
+        outline: 3px solid #dd2020;
+    }
+    &.selected.future-plan {
+        outline: 3px solid #133d64;
+    }
+}
+.empty-cell {
+    cursor: default;
+    background-color: #e3eff9;
+}
+.no-violation {
+    background: repeating-linear-gradient(135deg, #fff, #fff 4px, #044e93 4px, #044e93 7px);
+}
+
+.violation {
+    background: repeating-linear-gradient(135deg, #fff, #fff 4px, #dd2020 4px, #dd2020 7px);
+}
+
+.was-missing {
+    background-color: #dd2020;
+}
+.future-plan {
+    background-color: #3d75a9;
+}
+@media (max-width: 651px) {
+    .schedule-cell {
+        height: 40px;
+        width: 40px;
+    }
+}
