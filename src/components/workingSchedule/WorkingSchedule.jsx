@@ -1,5 +1,4 @@
 import EmployeeSchedule from "../employeeSchedule/EmployeeSchedule";
-import prepareDataForSchedule from "../../utils/prepareDataForSchedule";
 import "./WorkingSchedule.scss";
 
 const WorkingSchedule = ({ monthData, employeesData, handleSelectEmployee }) => {
@@ -10,13 +9,12 @@ const WorkingSchedule = ({ monthData, employeesData, handleSelectEmployee }) => 
         </div>
     ));
     const schedules = employeesData.map((data, index) => {
-        const dataForCell = data.map((item) => prepareDataForSchedule(item));
         const employeeName = data[0].employee;
         return (
             <EmployeeSchedule
                 key={index}
                 employeeName={employeeName}
-                employeeData={dataForCell}
+                employeeData={data}
                 monthData={monthData}
                 handleSelectEmployee={handleSelectEmployee}
             />

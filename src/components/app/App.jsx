@@ -1,7 +1,7 @@
 import SchedulePage from "../../pages/schedulePage/SchedulePage";
 
-import "./App.scss";
 import "normalize.css";
+import "./App.scss";
 
 const App = () => {
     return (

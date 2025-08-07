@@ -54,21 +54,20 @@ function prepareDataForSchedule(data) {
     const isLeftEarly = timeFactTo ? timeFactTo < timePlanTo : null;
     const isMissing = isPast && !hoursFactFrom && !hoursFactTo;
     return {
-        [date]: {
-            id,
-            employee,
-            role,
-            store,
-            fullDate,
-            isLate,
-            isLeftEarly,
-            isMissing,
-            planStart: hoursPlanFrom,
-            planEnd: hoursPlanTo,
-            factStart: hoursFactFrom,
-            factEnd: hoursFactTo,
-            isPast,
-        },
+        id,
+        employee,
+        role,
+        store,
+        date,
+        fullDate,
+        isLate,
+        isLeftEarly,
+        isMissing,
+        planStart: hoursPlanFrom,
+        planEnd: hoursPlanTo,
+        factStart: hoursFactFrom,
+        factEnd: hoursFactTo,
+        isPast,
     };
 }
 

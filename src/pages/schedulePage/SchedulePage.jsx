@@ -1,14 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
+
 import transformData from "../../utils/transformData";
+import prepareObjectForChart from "../../utils/prepareObjectForChart";
+import splitChartDataByNumber from "../../utils/splitChartDataByNumber";
+import prepareDataForSchedule from "../../utils/prepareDataForSchedule";
+
 import WorkingSchedule from "../../components/workingSchedule/WorkingSchedule";
 import ChartBoard from "../../components/chartBoard/ChartBoard";
 import ScheduleFilter from "../../components/scheduleFilter/ScheduleFilter";
 import ShiftData from "../../components/shiftData/ShiftData";
-import splitChartDataByNumber from "../../utils/splitChartDataByNumber";
 import { store } from "../../store/store";
 
 import "./SchedulePage.scss";
-import prepareObjectForChart from "../../utils/prepareObjectForChart";
 
 const SchedulePage = () => {
     const [prepearedData, setPrepearedData] = useState(null);
@@ -16,13 +19,23 @@ const SchedulePage = () => {
     const [filteredMonth, setFilteredMonth] = useState(null);
     const [filterPeriod, setFilterPeriod] = useState();
     const [chartboardData, setChartboardData] = useState(null);
+    const [workingScheduleData, setWorkingScheduleData] = useState(null);
     const [selectedEmployeeName, setSelectedEmployeeName] = useState(null);
     const setEmployee = store((state) => state.setSelectedEmployee);
     useEffect(() => {
         fetch("/data/database.json")
             .then((data) => data.json())
             .then((data) => {
-                setPrepearedData(transformData(data));
+                const dataSortedByEmployeeName = transformData(data);
+                setPrepearedData(dataSortedByEmployeeName);
+                const dataForWorkingSchedule = dataSortedByEmployeeName.map(
+                    (singleEmployeeDataCollection) => {
+                        return singleEmployeeDataCollection.map((singleItem) =>
+                            prepareDataForSchedule(singleItem)
+                        );
+                    }
+                );
+                setWorkingScheduleData(dataForWorkingSchedule);
             });
     }, []);
     useEffect(() => {
@@ -86,7 +99,7 @@ const SchedulePage = () => {
             <div className="schedule-page__working-schedule">
                 <WorkingSchedule
                     monthData={filteredMonth}
-                    employeesData={prepearedData}
+                    employeesData={workingScheduleData}
                     handleSelectEmployee={handleSelectEmployee}
                 />
             </div>

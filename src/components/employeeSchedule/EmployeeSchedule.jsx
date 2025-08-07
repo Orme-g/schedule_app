@@ -15,7 +15,11 @@ const EmployeeSchedule = ({ employeeName, employeeData, monthData, handleSelectE
         setSelectedEmployee(employeeName);
     }
     const cumulativeData = useMemo(() => {
-        return employeeData.reduce((prev, next) => ({ ...prev, ...next }));
+        const outputData = {};
+        for (const item of employeeData) {
+            outputData[item.date] = item;
+        }
+        return outputData;
     }, [employeeData]);
     const toDisplay = monthData.map(({ date }) => {
         const cellData = cumulativeData[date];
